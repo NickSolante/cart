@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import Title from '../layouts/Title'
 import { storeProducts } from '../data'
-import Product from './Product'
+import { Products } from '../context/CartState'
 
 const ProductList = props => {
   console.log(props)
