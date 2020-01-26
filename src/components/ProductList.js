@@ -1,12 +1,13 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import Title from '../layouts/Title'
 import { storeProducts } from '../data'
-import { Products } from '../context/CartState'
+import CartContext from '../context/cartContext'
 
 const ProductList = props => {
   console.log(props)
+  const cartContext = useContext(CartContext)
 
-  const [products, setProducts] = useState(storeProducts)
+  const { products } = cartContext
 
   const hello = Object.entries(products)
   console.log('here are the products', products)

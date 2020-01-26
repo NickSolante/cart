@@ -9,7 +9,7 @@ const CartState = props => {
   }
   const [state, dispatch] = useReducer(CartReducer, initialState)
   return (
-    <CartContext.Provider value={{ product: state.products }}>
+    <CartContext.Provider value={{ products: state.products }}>
       {props.children}
     </CartContext.Provider>
   )
