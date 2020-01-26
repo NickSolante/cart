@@ -7,14 +7,14 @@ const ProductList = props => {
   console.log(props)
 
   const [products, setProducts] = useState(storeProducts)
+
   const hello = Object.entries(products)
-  console.log(hello)
+  console.log('here are the products', products)
   return (
     <Fragment>
       <div className='px-5 '>
         <div className='container'>
           <Title name='Our' title='Products' />
-          <Product></Product>
         </div>
       </div>
     </Fragment>
