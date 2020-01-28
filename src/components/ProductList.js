@@ -1,6 +1,5 @@
-import React, { Fragment, useState, useContext } from 'react'
+import React, { Fragment, useContext } from 'react'
 import Title from '../layouts/Title'
-import { storeProducts } from '../data'
 import CartContext from '../context/cartContext'
 
 const ProductList = props => {
@@ -10,12 +9,18 @@ const ProductList = props => {
   const { products } = cartContext
 
   const hello = Object.entries(products)
+
   console.log('here are the products', products)
   return (
     <Fragment>
       <div className='px-5 '>
         <div className='container'>
           <Title name='Our' title='Products' />
+          <cartContext.Consumer>
+            {hello => {
+              return <h1>{hello.title}</h1>
+            }}
+          </cartContext.Consumer>
         </div>
       </div>
     </Fragment>
