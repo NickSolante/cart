@@ -8,8 +8,6 @@ const ProductList = props => {
 
   const { products } = cartContext
 
-  const hello = Object.entries(products)
-
   console.log('here are the products', products)
   return (
     <Fragment>
