@@ -1,11 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import CartContext from '../context/cartContext'
 
 const Product = () => {
-  return (
-    <div>
-      <h1>hello there</h1>
-    </div>
-  )
+  return <h1>hello from produr</h1>
 }
 
 export default Product
