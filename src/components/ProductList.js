@@ -1,14 +1,9 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import Title from '../layouts/Title'
 import CartContext from '../context/cartContext'
 import Product from './Product'
 
 const ProductList = props => {
-  console.log(props)
-  const cartContext = useContext(CartContext)
-
-  const { products } = cartContext
-  console.log('here are the products', products)
   return (
     <Fragment>
       <div className='px-5 '>
