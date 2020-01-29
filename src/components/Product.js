@@ -57,6 +57,19 @@ const ProductWrapper = styled.div`
       border: 0.04rem solid rgba(0, 0, 0, 0.2);
       box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
     }
+    .card-footer {
+      background: rgba(247, 247, 247);
+    }
+  }
+  .img-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .img-container:hover .card-img-top {
+    transform: scale(1.2);
+  }
+  .cart-btn {
+    position: absolute;
   }
 `
 export default Product
