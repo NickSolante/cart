@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import Title from '../layouts/Title'
 import CartContext from '../context/cartContext'
 import Product from './Product'
+import { Row, Col } from 'react-bootstrap'
 
 const ProductList = props => {
   return (
