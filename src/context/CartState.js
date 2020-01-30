@@ -22,15 +22,19 @@ const CartState = props => {
     setProducts(tempProducts)
   }, [])
 
-  const handleDetail = () => {
-    console.log('hello from detail')
+  const handleDetail = id => {
+    const product = getItem(id)
     dispatch({
       type: HANDLE_DETAIL,
-      payload: state.action
+      payload: product
     })
   }
-  const addToCart = () => {
-    console.log('hello from add to cart')
+  const getItem = id => {
+    return products.find(item => item.id === id) // return the item with the same data
+  }
+
+  const addToCart = id => {
+    console.log(`hello from add to cart ${id}`)
     dispatch({
       type: ADD_TO_CART,
       payload: state.action

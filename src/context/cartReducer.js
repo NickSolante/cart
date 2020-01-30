@@ -11,8 +11,7 @@ export default (state, action) => {
     case HANDLE_DETAIL:
       return {
         ...state,
-        loading: false,
-        repos: action.payload
+        detailProduct: action.payload
       }
     default:
       return state
