@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import CartContext from '../context/cartContext'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 //to destructure a prop that is being passed from the parent component
 const Product = ({ product: { id, title, img, price, inCart } }) => {
@@ -41,6 +42,16 @@ const Product = ({ product: { id, title, img, price, inCart } }) => {
       </div>
     </ProductWrapper>
   )
+}
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    inCart: PropTypes.bool
+  }).isRequired
 }
 const ProductWrapper = styled.div`
   .card {
