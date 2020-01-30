@@ -1,4 +1,4 @@
-import { HANDLE_DETAIL, ADD_TO_CART } from '../type'
+import { HANDLE_DETAIL, ADD_TO_CART, USE_EFFECT } from '../type'
 
 export default (state, action) => {
   switch (action.type) {
@@ -9,6 +9,11 @@ export default (state, action) => {
         loading: false
       }
     case HANDLE_DETAIL:
+      return {
+        ...state,
+        detailProduct: action.payload
+      }
+    case USE_EFFECT:
       return {
         ...state,
         detailProduct: action.payload

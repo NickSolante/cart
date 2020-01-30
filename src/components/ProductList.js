@@ -12,6 +12,7 @@ const ProductList = props => {
           <div className='row'>
             <CartContext.Consumer>
               {context => {
+                console.log(context)
                 return context.products.map(product => {
                   return <Product key={product.id} product={product} />
                 })

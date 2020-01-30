@@ -31,7 +31,9 @@ const CartState = props => {
     })
   }
   const getItem = id => {
-    return products.find(item => item.id === id) // return the item with the same data
+    const product = products.find(item => item.id === id) // return the item with the same data
+    console.log(`coming from products ${product}`)
+    return product
   }
 
   const addToCart = id => {
