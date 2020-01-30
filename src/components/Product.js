@@ -1,37 +1,41 @@
-import React, { Fragment } from 'react'
+import React, { useContext } from 'react'
 import CartContext from '../context/cartContext'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+
 import PropTypes from 'prop-types'
 
 //to destructure a prop that is being passed from the parent component
 const Product = ({ product: { id, title, img, price, inCart } }) => {
+  const cartContext = useContext(CartContext)
+  const { addToCart, handleDetail } = cartContext
   return (
     <ProductWrapper className='col-9 mx-auto col-md-6 col-lg-3 my-3'>
       <div className='card'>
-        <div
-          className='img-container p-5'
-          onClick={() => console.log('you clicked on the image container')}
-        >
-          <Link to='/details'>
-            <img src={img} alt='produvc' className='card-img-top' />
-          </Link>
-          <button
-            className='cart-btn'
-            disabled={inCart ? true : false}
-            onClick={() => {
-              console.log('added to the cart')
-            }}
-          >
-            {inCart ? (
-              <p className='text-Capitalized mb-bottom-0' disabled>
-                in cart
-              </p>
-            ) : (
-              <i className='fas fa-cart-plus' />
-            )}
-          </button>
-        </div>
+        <CartContext.Consumer>
+          {value => (
+            <div className='img-container p-5' onClick={() => handleDetail(id)}>
+              <Link to='/details'>
+                <img src={img} alt='produvc' className='card-img-top' />
+              </Link>
+              <button
+                className='cart-btn'
+                disabled={inCart ? true : false}
+                onClick={() => {
+                  addToCart(id)
+                }}
+              >
+                {inCart ? (
+                  <p className='text-Capitalized mb-bottom-0' disabled>
+                    in cart
+                  </p>
+                ) : (
+                  <i className='fas fa-cart-plus' />
+                )}
+              </button>
+            </div>
+          )}
+        </CartContext.Consumer>
         <div className='card-footer d-flex justify-content-between'>
           <p className='align-self-center mb-0'>{title}</p>
           <h5 className='text-blue font-italic mb-0'>

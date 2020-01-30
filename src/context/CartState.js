@@ -24,6 +24,7 @@ const CartState = props => {
 
   const handleDetail = id => {
     const product = getItem(id)
+    console.log(product)
     dispatch({
       type: HANDLE_DETAIL,
       payload: product
