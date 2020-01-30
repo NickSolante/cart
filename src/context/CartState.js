@@ -32,7 +32,7 @@ const CartState = props => {
   }
   const getItem = id => {
     const product = products.find(item => item.id === id) // return the item with the same data
-    console.log(`coming from products ${product}`)
+    console.log(`coming from products ${JSON.stringify(product)}`)
     return product
   }
 
