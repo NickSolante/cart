@@ -46,7 +46,12 @@ const CartState = props => {
 
   return (
     <CartContext.Provider
-      value={{ products, addToCart, handleDetail, ...initialState }}
+      value={{
+        products,
+        addToCart,
+        handleDetail,
+        detailProduct: state.detailProduct
+      }}
     >
       {props.children}
     </CartContext.Provider>
