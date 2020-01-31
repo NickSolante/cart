@@ -1,4 +1,4 @@
-import { HANDLE_DETAIL, ADD_TO_CART, USE_EFFECT } from '../type'
+import { HANDLE_DETAIL, ADD_TO_CART } from '../type'
 
 export default (state, action) => {
   console.log('below is the new discountProduct state')
@@ -7,7 +7,7 @@ export default (state, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        users: [],
+        product: action.payload.tempProduct,
         loading: false
       }
     case HANDLE_DETAIL:
@@ -15,6 +15,7 @@ export default (state, action) => {
         ...state,
         detailProduct: action.payload
       }
+
     default:
       return state
   }

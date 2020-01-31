@@ -7,6 +7,7 @@ import { HANDLE_DETAIL, ADD_TO_CART } from '../type'
 const CartState = props => {
   const initialState = {
     detailProduct: detailProduct,
+    products: [],
     cart: []
   }
 
@@ -34,7 +35,8 @@ const CartState = props => {
   }
   const getItem = id => {
     const product = products.find(item => item.id === id) // return the item with the same data
-    console.log(`coming from products ${JSON.stringify(product)}`)
+    console.log('coming from detail products in getItem')
+    console.log(products)
     return product
   }
 
@@ -49,7 +51,7 @@ const CartState = props => {
     console.log(`hello from add to cart ${id}`)
     dispatch({
       type: ADD_TO_CART,
-      payload: state.action
+      payload: { tempProducts, product, price }
     })
   }
 
