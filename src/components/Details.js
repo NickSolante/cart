@@ -17,6 +17,7 @@ const Details = () => {
           inCart,
           company
         } = value.detailProduct
+
         return (
           <div className='container py-5'>
             {/*title*/}
