@@ -2,7 +2,7 @@ import React, { useReducer, useState, useEffect } from 'react'
 import CartContext from './cartContext'
 import CartReducer from './cartReducer'
 import { storeProducts, detailProduct } from '../data'
-import { HANDLE_DETAIL, ADD_TO_CART } from '../type'
+import { HANDLE_DETAIL, ADD_TO_CART, USE_EFFECT } from '../type'
 
 const CartState = props => {
   const initialState = {
@@ -12,7 +12,6 @@ const CartState = props => {
   }
 
   const [state, dispatch] = useReducer(CartReducer, initialState)
-  const [products, setProducts] = useState([])
 
   //When rather than using component did mount
   //use "useEffect hook to immitate didmount"
@@ -22,7 +21,10 @@ const CartState = props => {
       const singleItem = { ...item }
       tempProducts = [...tempProducts, singleItem]
     })
-    setProducts(tempProducts)
+    dispatch({
+      type: USE_EFFECT,
+      payload: tempProducts
+    })
   }, [])
 
   const handleDetail = id => {
@@ -34,21 +36,21 @@ const CartState = props => {
     })
   }
   const getItem = id => {
-    const product = products.find(item => item.id === id) // return the item with the same data
+    const product = { ...this.state.products } // return the item with the same data
+    const tempProd = product.find(item => item.id === id)
     console.log('coming from detail products in getItem')
-    console.log(products)
-    return product
+    console.log(tempProd)
+    return tempProd
   }
 
   const addToCart = id => {
-    let tempProducts = [...products]
+    let tempProducts = [...this.state.products]
     const index = tempProducts.indexOf(getItem(id))
     const product = tempProducts[index]
     product.inCart = true
     product.count = 1
     const price = product.price
     product.total = price
-    console.log(`hello from add to cart ${id}`)
     dispatch({
       type: ADD_TO_CART,
       payload: { tempProducts, product, price }
@@ -58,7 +60,7 @@ const CartState = props => {
   return (
     <CartContext.Provider
       value={{
-        products,
+        products: state.products,
         addToCart,
         handleDetail,
         detailProduct: state.detailProduct
