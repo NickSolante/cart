@@ -6,6 +6,7 @@ import { HANDLE_DETAIL, ADD_TO_CART, USE_EFFECT } from '../type'
 
 const CartState = props => {
   const initialState = {
+<<<<<<< HEAD
     detailProduct: detailProduct,
     products: [],
     cart: []
@@ -13,6 +14,13 @@ const CartState = props => {
 
   const [state, dispatch] = useReducer(CartReducer, initialState)
 
+=======
+    detailProduct: detailProduct
+  }
+
+  const [state, dispatch] = useReducer(CartReducer, initialState)
+  const [products, setProducts] = useState([])
+>>>>>>> parent of bdfed67... cart state update
   //When rather than using component did mount
   //use "useEffect hook to immitate didmount"
   useEffect(() => {
@@ -44,6 +52,7 @@ const CartState = props => {
   }
 
   const addToCart = id => {
+<<<<<<< HEAD
     let tempProducts = [...this.state.products]
     const index = tempProducts.indexOf(getItem(id))
     const product = tempProducts[index]
@@ -51,6 +60,9 @@ const CartState = props => {
     product.count = 1
     const price = product.price
     product.total = price
+=======
+    console.log(`hello from add to cart ${id}`)
+>>>>>>> parent of bdfed67... cart state update
     dispatch({
       type: ADD_TO_CART,
       payload: { tempProducts, product, price }
