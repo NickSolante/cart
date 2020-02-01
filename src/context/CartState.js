@@ -42,9 +42,7 @@ const CartState = props => {
     product.total = price
     let newCart = [...cart, product]
     setCart(newCart)
-    cart.forEach(item => {
-      console.log(item)
-    })
+    console.log(cart)
   }
 
   return (
