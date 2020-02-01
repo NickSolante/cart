@@ -7,6 +7,7 @@ import { HANDLE_DETAIL, ADD_TO_CART, USE_EFFECT } from '../type'
 const CartState = props => {
   const initialState = {
 <<<<<<< HEAD
+<<<<<<< HEAD
     detailProduct: detailProduct,
     products: [],
     cart: []
@@ -14,6 +15,13 @@ const CartState = props => {
 
   const [state, dispatch] = useReducer(CartReducer, initialState)
 
+=======
+    detailProduct: detailProduct
+  }
+
+  const [state, dispatch] = useReducer(CartReducer, initialState)
+  const [products, setProducts] = useState([])
+>>>>>>> parent of bdfed67... cart state update
 =======
     detailProduct: detailProduct
   }
@@ -53,6 +61,7 @@ const CartState = props => {
 
   const addToCart = id => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     let tempProducts = [...this.state.products]
     const index = tempProducts.indexOf(getItem(id))
     const product = tempProducts[index]
@@ -61,6 +70,8 @@ const CartState = props => {
     const price = product.price
     product.total = price
 =======
+=======
+>>>>>>> parent of bdfed67... cart state update
     console.log(`hello from add to cart ${id}`)
 >>>>>>> parent of bdfed67... cart state update
     dispatch({
