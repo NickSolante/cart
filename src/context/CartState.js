@@ -1,17 +1,13 @@
-import React, { useReducer, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import CartContext from './cartContext'
 import CartReducer from './cartReducer'
 import { storeProducts, detailProduct } from '../data'
 
 const CartState = props => {
-  const initialState = {
-    cart: []
-  }
-
-  const [state, dispatch] = useReducer(CartReducer, initialState)
   const [products, setProducts] = useState([])
   const [detailProducts, setDetailProducts] = useState(detailProduct)
   const [cart, setCart] = useState([])
+  const [price, setPrice] = useState(0)
   //When rather than using component did mount
   //use "useEffect hook to immitate didmount"
   useEffect(() => {
@@ -39,10 +35,11 @@ const CartState = props => {
     product.inCart = true
     product.count = 1
     const price = product.price
-    product.total = price
+    const tempTotal = product.total
+    product.total = price + tempTotal
     let newCart = [...cart, product]
     setCart(newCart)
-    console.log(cart)
+    console.log(newCart)
   }
 
   return (
@@ -51,7 +48,9 @@ const CartState = props => {
         products,
         addToCart,
         handleDetail,
-        detailProducts
+        detailProducts,
+        cart,
+        price
       }}
     >
       {props.children}
