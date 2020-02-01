@@ -2,21 +2,16 @@ import React, { useReducer, useState, useEffect } from 'react'
 import CartContext from './cartContext'
 import CartReducer from './cartReducer'
 import { storeProducts, detailProduct } from '../data'
-import { HANDLE_DETAIL, ADD_TO_CART, USE_EFFECT } from '../type'
 
 const CartState = props => {
   const initialState = {
-    detailProduct: detailProduct,
     cart: []
   }
 
   const [state, dispatch] = useReducer(CartReducer, initialState)
   const [products, setProducts] = useState([])
-
-  detailProduct: detailProduct
-
-  const [state, dispatch] = useReducer(CartReducer, initialState)
-  const [products, setProducts] = useState([])
+  const [detailProducts, setDetailProducts] = useState(detailProduct)
+  const [cart, setCart] = useState([])
   //When rather than using component did mount
   //use "useEffect hook to immitate didmount"
   useEffect(() => {
@@ -25,50 +20,40 @@ const CartState = props => {
       const singleItem = { ...item }
       tempProducts = [...tempProducts, singleItem]
     })
-    dispatch({
-      type: USE_EFFECT,
-      payload: tempProducts
-    })
+    setProducts(tempProducts)
   }, [])
 
   const handleDetail = id => {
     const product = getItem(id)
-    console.log(product)
-    dispatch({
-      type: HANDLE_DETAIL,
-      payload: product
-    })
+    setDetailProducts(product)
   }
   const getItem = id => {
-    const product = { ...this.state.products } // return the item with the same data
-    const tempProd = product.find(item => item.id === id)
-    console.log('coming from detail products in getItem')
-    console.log(tempProd)
+    const tempProd = products.find(item => item.id === id)
     return tempProd
   }
 
   const addToCart = id => {
-    let tempProducts = [...this.state.products]
+    let tempProducts = [...products]
     const index = tempProducts.indexOf(getItem(id))
     const product = tempProducts[index]
     product.inCart = true
     product.count = 1
     const price = product.price
     product.total = price
-    console.log(`hello from add to cart ${id}`)
-    dispatch({
-      type: ADD_TO_CART,
-      payload: { tempProducts, product, price }
+    let newCart = [...cart, product]
+    setCart(newCart)
+    cart.forEach(item => {
+      console.log(item)
     })
   }
 
   return (
     <CartContext.Provider
       value={{
-        products: state.products,
+        products,
         addToCart,
         handleDetail,
-        detailProduct: state.detailProduct
+        detailProducts
       }}
     >
       {props.children}

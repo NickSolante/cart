@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import CartContext from '../context/cartContext'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
@@ -16,7 +16,7 @@ const Details = () => {
           info,
           inCart,
           company
-        } = value.detailProduct
+        } = value.detailProducts
 
         return (
           <div className='container py-5'>
