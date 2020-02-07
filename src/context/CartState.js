@@ -39,7 +39,6 @@ const CartState = props => {
     product.total = price + tempTotal
     let newCart = [...cart, product]
     setCart(newCart)
-    console.log(newCart)
   }
 
   return (
