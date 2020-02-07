@@ -8,6 +8,8 @@ const CartState = props => {
   const [detailProducts, setDetailProducts] = useState(detailProduct)
   const [cart, setCart] = useState([])
   const [price, setPrice] = useState(0)
+  const [modalOpen, setModalOpen] = useState(true)
+  const [modalProduct, setModalProduct] = useState(detailProduct)
   //When rather than using component did mount
   //use "useEffect hook to immitate didmount"
   useEffect(() => {
@@ -35,10 +37,14 @@ const CartState = props => {
     product.inCart = true
     product.count = 1
     const price = product.price
-    const tempTotal = product.total
-    product.total = price + tempTotal
+    product.total = price
     let newCart = [...cart, product]
+    console.log(newCart)
     setCart(newCart)
+  }
+
+  const openModal = id => {
+    const product = this.getItem(id)
   }
 
   return (
