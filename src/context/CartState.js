@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import CartContext from './cartContext'
-import CartReducer from './cartReducer'
 import { storeProducts, detailProduct } from '../data'
 
 const CartState = props => {
@@ -44,7 +43,7 @@ const CartState = props => {
   }
 
   const openModal = id => {
-    const product = this.getItem(id)
+    const product = getItem(id)
     setModalOpen(true)
     setModalProduct(product)
   }

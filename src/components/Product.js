@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 //to destructure a prop that is being passed from the parent component
 const Product = ({ product: { id, title, img, price, inCart } }) => {
   const cartContext = useContext(CartContext)
-  const { addToCart, handleDetail } = cartContext
+  const { addToCart, handleDetail, openModal, closeModal } = cartContext
   return (
     <ProductWrapper className='col-9 mx-auto col-md-6 col-lg-3 my-3'>
       <div className='card'>
@@ -23,6 +23,7 @@ const Product = ({ product: { id, title, img, price, inCart } }) => {
                 disabled={inCart ? true : false}
                 onClick={() => {
                   addToCart(id)
+                  openModal(id)
                 }}
               >
                 {inCart ? (

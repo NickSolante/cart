@@ -57,6 +57,7 @@ const Details = () => {
                     disable={inCart ? true : false}
                     onClick={() => {
                       value.addToCart(id) //onClick use the addToCart function
+                      value.openModal(id)
                     }}
                     className='m-2 alert-info'
                   >
