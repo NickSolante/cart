@@ -61,7 +61,11 @@ const CartState = props => {
         handleDetail,
         detailProducts,
         cart,
-        price
+        price,
+        modalOpen,
+        modalProduct,
+        closeModal,
+        openModal
       }}
     >
       {props.children}
