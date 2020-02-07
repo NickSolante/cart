@@ -45,6 +45,12 @@ const CartState = props => {
 
   const openModal = id => {
     const product = this.getItem(id)
+    setModalOpen(true)
+    setModalProduct(product)
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
   }
 
   return (
