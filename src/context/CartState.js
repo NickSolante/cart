@@ -7,7 +7,7 @@ const CartState = props => {
   const [detailProducts, setDetailProducts] = useState(detailProduct)
   const [cart, setCart] = useState([])
   const [price, setPrice] = useState(0)
-  const [modalOpen, setModalOpen] = useState(true)
+  const [modalOpen, setModalOpen] = useState(false)
   const [modalProduct, setModalProduct] = useState(detailProduct)
   //When rather than using component did mount
   //use "useEffect hook to immitate didmount"

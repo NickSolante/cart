@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import CartContext from '../context/cartContext'
-import { Button } from 'react-bootstrap'
+import { Button, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function Modal() {
@@ -19,9 +19,26 @@ function Modal() {
                 <div className='row'>
                   <div
                     id='modalCon'
-                    className='col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize'
+                    className='col-8 mx-auto col-md-6 col-lg-4 text-center text-capitalize p-5'
                   >
                     <h5>Item added to the cart</h5>
+                    <img src={img} className='img-fluid' alt='product'></img>
+                    <h5>{title}</h5>
+                    <h5 className='text-muted'>Price : ${price}</h5>
+                    <Row>
+                      <Col>
+                        <Link to='/'>
+                          <Button onClick={() => closeModal()}>Store</Button>
+                        </Link>
+                      </Col>
+                      <Col>
+                        <Link to='/cart/'>
+                          <Button cart onClick={() => closeModal()}>
+                            Cart
+                          </Button>
+                        </Link>
+                      </Col>
+                    </Row>
                   </div>
                 </div>
               </div>
